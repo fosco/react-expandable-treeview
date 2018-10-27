@@ -62,22 +62,22 @@ const data = [
         children: [
             {
                 id: 1,
-                label: 'Son'
+                label: 'A Son'
             },
             {
                 id: 2,
-                label: 'Another son'
+                label: 'Another Son'
             }
         ],
         id: 3,
-        label: 'Another father',
+        label: 'Another Father',
         children: [
             {
                 id: 4,
                 children: [
                     {
                         id: 5,
-                        label: 'Yet another son',
+                        label: 'Yet Another Son',
                     }
                 ]
             }
