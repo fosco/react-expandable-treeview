@@ -13,6 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/riourbana/react-expandable-treeview.git"
   },
+  "keywords": [
+    "react",
+    "treeview",
+    "tree",
+    "expandable",
+    "simple",
+    "fast"
+],
   "author": "Lorenzo Carducci",
   "bugs": {
     "url": "https://github.com/riourbana/react-expandable-treeview/issues"
