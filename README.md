@@ -3,6 +3,8 @@
 
 A simple and fully customizable tree view React component
 
+Check out the [live demo!](http://react-expandable-treeview.surge.sh)
+
 ## Quick start
 1. Install the package using `yarn add react-expandable-treeview` or `npm install react-expandable-treeview`
 
