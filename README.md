@@ -108,3 +108,4 @@ Here are the props you can pass to `TreeView`.
 | lineAlpha| `number`| optional | 0.4 | The alpha value of the tree lines |
 | expandButtonColor | `string`| optional | `'#4B6DAA'` | The color of the expand button |
 | nodeSize| `number`| optional | 20 | The size of the tree leaf icons |
+| nodeIcon| `string`| optional | [blue dot] | The node icon. Must be a base64 imported image |
