@@ -9,9 +9,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import shortid from 'shortid';
 
-// Images
-import nodeIcon from '../images/node.png';
-
 // Styles
 const RowWrapper = styled.div`
   width: 100%;
@@ -156,6 +153,7 @@ export default class Row extends React.Component {
             lineAlpha,
             expandButtonColor,
             nodeSize,
+            nodeIcon,
         } = this.props;
         const hasChildren = element.children && element.children.length > 0;
         return (
@@ -187,7 +185,6 @@ export default class Row extends React.Component {
                             <NodeIcon
                                 alt="node icon"
                                 src={nodeIcon}
-                                nodeIcon={nodeIcon}
                                 nodeSize={nodeSize}
                             />
                             {hasChildren && isExpanded ?
@@ -243,4 +240,5 @@ Row.propTypes = {
     lineAlpha: PropTypes.number,
     expandButtonColor: PropTypes.string,
     nodeSize: PropTypes.number,
+    nodeIcon: PropTypes.string,
 };

@@ -9,6 +9,9 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import Row from './Row';
 
+// Images
+import nodeIcon from '../images/node.png';
+
 class TreeView extends React.Component {
     constructor() {
         super();
@@ -44,6 +47,7 @@ class TreeView extends React.Component {
             lineAlpha,
             expandButtonColor,
             nodeSize,
+            nodeIcon,
         } = this.props;
         const { expandedElements } = this.state;
         return (
@@ -64,6 +68,7 @@ class TreeView extends React.Component {
                         lineAlpha={lineAlpha}
                         expandButtonColor={expandButtonColor}
                         nodeSize={nodeSize}
+                        nodeIcon={nodeIcon}
                     />
                 ))}
             </div>
@@ -80,6 +85,7 @@ TreeView.propTypes = {
     lineAlpha: PropTypes.number,
     expandButtonColor: PropTypes.string,
     nodeSize: PropTypes.number,
+    nodeIcon: PropTypes.string,
 };
 
 TreeView.defaultProps = {
@@ -89,6 +95,7 @@ TreeView.defaultProps = {
     lineAlpha: 0.4,
     expandButtonColor: '#4B6DAA',
     nodeSize: 20,
+    nodeIcon: nodeIcon,
 }
 
 export default TreeView;
