@@ -19,6 +19,7 @@ import TreeView from 'react-expandable-treeview';
 ```javascript
     {
         id: 0,
+        hasChildren: true,
         children: [
             //...all the children elements*/
         ],
@@ -31,21 +32,27 @@ And an example of the `data` prop o be passed to `TreeView` component.
 const data = [
     {
         id: 0,
+        hasChildren: true,
         children: [
             {
-                id: 1
+                id: 1,
+                hasChildren: false
             },
             {
-                id: 2
+                id: 2,
+                hasChildren: false
             }
         ],
         id: 3,
+        hasChildren: true,
         children: [
             {
                 id: 4,
+                hasChildren: true,
                 children: [
                     {
-                        id: 5
+                        id: 5,
+                        hasChildren: false
                     }
                 ]
             }
@@ -60,26 +67,32 @@ In the example we add a custom `label` attribute to our `data` elements and we w
 const data = [
     {
         id: 0,
-        label: 'A Father'
+        label: 'A Father',
+        hasChildren: true,
         children: [
             {
                 id: 1,
-                label: 'A Son'
+                label: 'A Son',
+                hasChildren: false
             },
             {
                 id: 2,
-                label: 'Another Son'
+                label: 'Another Son',
+                hasChildren: false
             }
         ],
         id: 3,
         label: 'Another Father',
+        hasChildren: true,
         children: [
             {
                 id: 4,
+                hasChildren: true,
                 children: [
                     {
                         id: 5,
                         label: 'Yet Another Son',
+                        hasChildren: false
                     }
                 ]
             }
