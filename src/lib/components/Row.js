@@ -156,13 +156,14 @@ export default class Row extends React.Component {
             nodeIcon,
         } = this.props;
         const hasChildren = element.children && element.children.length > 0;
+        const showJunction = element.hasChildren
         return (
             <RowWrapper
                 first={depth === 0}
                 nodeSize={nodeSize}
             >
                 <FirstColumn nodeSize={nodeSize}>
-                    {this.renderJunction(hasChildren)}
+                    {this.renderJunction(showJunction)}
                     {!isLastParent &&
                         <VerticalLine
                             nodeSize={nodeSize}
