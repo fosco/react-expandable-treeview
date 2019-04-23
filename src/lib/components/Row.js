@@ -156,6 +156,7 @@ export default class Row extends React.Component {
             nodeIcon,
         } = this.props;
         const showJunction = element.hasChildren
+        const hasChildren = element && element.children && element.children.length > 0
 
         return (
             <RowWrapper
@@ -188,7 +189,7 @@ export default class Row extends React.Component {
                                 src={nodeIcon}
                                 nodeSize={nodeSize}
                             />
-                            {showJunction && isExpanded ?
+                            {hasChildren && isExpanded ?
                                 <VerticalLine
                                     nodeSize={nodeSize}
                                     lineWidth={lineWidth}
@@ -201,7 +202,7 @@ export default class Row extends React.Component {
                         </Connector>
                         <Node>{renderNode(element)}</Node>
                     </NodeWrapper>
-                    {showJunction && isExpanded && element.children.map((child, i) =>
+                    {hasChildren && isExpanded && element.children.map((child, i) =>
                         (
                             <Row
                                 key={shortid.generate()}

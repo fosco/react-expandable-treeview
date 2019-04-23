@@ -14,6 +14,7 @@ export default class App extends React.Component {
         <TreeView 
           data={testData}
           renderNode={this.renderNode}
+          onNodeClick={(element) => console.log(element)}
           />
       </div>
     )

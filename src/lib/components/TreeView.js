@@ -23,8 +23,9 @@ class TreeView extends React.Component {
         this.handleNodeClick = this.handleNodeClick.bind(this);
     }
 
-    handleNodeClick(id) {
+    handleNodeClick(element, id) {
         const { expandedElements } = this.state;
+        const { onNodeClick } = this.props
 
         if (!expandedElements.has(id)) {
             expandedElements.add(id);
@@ -34,7 +35,7 @@ class TreeView extends React.Component {
 
         this.setState({
             expandedElements,
-        });
+        }, () => { if(element.hasChildren) onNodeClick(element) });
     }
 
     render() {
@@ -60,7 +61,7 @@ class TreeView extends React.Component {
                         isLastParent={i === data.length - 1}
                         isExpanded={expandedElements.has(element.id)}
                         expandedElements={this.state.expandedElements}
-                        onNodeClick={this.handleNodeClick}
+                        onNodeClick={(id) => this.handleNodeClick(element, id)}
                         renderNode={renderNode}
                         lineColor={lineColor}
                         lineWidth={lineWidth}
