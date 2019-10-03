@@ -50,6 +50,12 @@ const Square = styled.div`
   font-weight: bold;
 `;
 
+const ExpandCollapse = styled.img`
+  width: ${(props) => props.nodeSize}px;
+  height: ${(props) => props.nodeSize}px;
+  cursor: pointer;
+`;
+
 const NodeIcon = styled.img`
   width: ${(props) => props.nodeSize}px;
 `;
@@ -110,9 +116,18 @@ export default class Row extends React.Component {
             lineWidth,
             lineColor,
             lineStyle,
-            lineAlpha
+            lineAlpha,
+            collapsedIcon,
+            expandedIcon,
         } = this.props;
-        if (hasChildren) {
+        if (hasChildren && collapsedIcon && expandedIcon) {
+            return <ExpandCollapse
+                alt={isExpanded ? 'collapse' : 'expand'}
+                src={isExpanded ? expandedIcon : collapsedIcon}
+                onClick={() => onNodeClick(element.id)}
+                nodeSize={nodeSize}
+            />;
+        } else if (hasChildren) {
             return (
                 <Square
                     expandButtonColor={expandButtonColor}
@@ -154,6 +169,8 @@ export default class Row extends React.Component {
             expandButtonColor,
             nodeSize,
             nodeIcon,
+            collapsedIcon,
+            expandedIcon,
         } = this.props;
         const hasChildren = element.children && element.children.length > 0;
         return (
@@ -218,6 +235,8 @@ export default class Row extends React.Component {
                                 expandButtonColor={expandButtonColor}
                                 nodeSize={nodeSize}
                                 nodeIcon={nodeIcon}
+                                collapsedIcon={collapsedIcon}
+                                expandedIcon={expandedIcon}
                             />
                         )
                     )}
