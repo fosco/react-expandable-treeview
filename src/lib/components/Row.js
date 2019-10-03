@@ -85,7 +85,7 @@ const HorizontalLine = styled.div`
 const Junction = styled.div`
   width: ${(props) => ((props.nodeSize / 2) + (props.lineWidth * 2))}px;
   height: ${(props) => (props.nodeSize / 2)}px;
-  margin-left: ${(props) => ((props.nodeSize / 2) - props.lineWidth)}px;
+  margin-left: ${(props) => (props.nodeSize / 2)}px;
   border-width: 0 0 ${((props) => props.lineWidth)}px ${(props) => props.lineWidth}px;
   border-color: ${(props) => props.lineColor};
   border-style: ${(props) => props.lineStyle};
@@ -217,6 +217,7 @@ export default class Row extends React.Component {
                                 lineAlpha={lineAlpha}
                                 expandButtonColor={expandButtonColor}
                                 nodeSize={nodeSize}
+                                nodeIcon={nodeIcon}
                             />
                         )
                     )}
