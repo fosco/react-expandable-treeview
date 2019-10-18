@@ -2,24 +2,19 @@ const testData = [
     {
         id: 0,
         name: "Felidae",
+        hasChildren: true,
         children: [
             {
                 id: 1,
                 name: "Pantherinae",
+                hasChildren: true,
                 children: [
-                    {
-                        id: 2,
-                        name: "Neofelis",
-                    },
-                    {
-                        id: 3,
-                        name: "Panthera",
-                    }
                 ]
             },
             {
                 id: 4,
                 name: "Felinae",
+                hasChildren: true,
                 children: [
                     {
                         id: 5,
@@ -28,6 +23,7 @@ const testData = [
                     {
                         id: 6,
                         name: "Felis",
+                        hasChildren: true,
                         children: [{
                             name: "Fatty Oscar",
                         }]
