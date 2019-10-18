@@ -217,6 +217,7 @@ export default class Row extends React.Component {
                                 lineAlpha={lineAlpha}
                                 expandButtonColor={expandButtonColor}
                                 nodeSize={nodeSize}
+                                nodeIcon={nodeIcon}
                             />
                         )
                     )}

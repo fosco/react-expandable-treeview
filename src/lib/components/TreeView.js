@@ -10,12 +10,12 @@ import shortid from 'shortid';
 import Row from './Row';
 
 // Images
-import nodeIcon from '../images/node.png';
+import defaultNodeIcon from '../images/node.png';
 
 class TreeView extends React.Component {
     constructor() {
         super();
-
+        
         this.state = {
             expandedElements: new Set(),
         };
@@ -95,7 +95,7 @@ TreeView.defaultProps = {
     lineAlpha: 0.4,
     expandButtonColor: '#4B6DAA',
     nodeSize: 20,
-    nodeIcon: nodeIcon,
+    nodeIcon: defaultNodeIcon,
 }
 
 export default TreeView;
