@@ -50,6 +50,12 @@ const Square = styled.div`
   font-weight: bold;
 `;
 
+const ExpandCollapse = styled.img`
+  width: ${(props) => props.nodeSize}px;
+  height: ${(props) => props.nodeSize}px;
+  cursor: pointer;
+`;
+
 const NodeIcon = styled.img`
   width: ${(props) => props.nodeSize}px;
 `;
@@ -85,7 +91,7 @@ const HorizontalLine = styled.div`
 const Junction = styled.div`
   width: ${(props) => ((props.nodeSize / 2) + (props.lineWidth * 2))}px;
   height: ${(props) => (props.nodeSize / 2)}px;
-  margin-left: ${(props) => ((props.nodeSize / 2) - props.lineWidth)}px;
+  margin-left: ${(props) => (props.nodeSize / 2)}px;
   border-width: 0 0 ${((props) => props.lineWidth)}px ${(props) => props.lineWidth}px;
   border-color: ${(props) => props.lineColor};
   border-style: ${(props) => props.lineStyle};
@@ -110,9 +116,18 @@ export default class Row extends React.Component {
             lineWidth,
             lineColor,
             lineStyle,
-            lineAlpha
+            lineAlpha,
+            collapsedIcon,
+            expandedIcon,
         } = this.props;
-        if (hasChildren) {
+        if (hasChildren && collapsedIcon && expandedIcon) {
+            return <ExpandCollapse
+                alt={isExpanded ? 'collapse' : 'expand'}
+                src={isExpanded ? expandedIcon : collapsedIcon}
+                onClick={() => onNodeClick(element.id)}
+                nodeSize={nodeSize}
+            />;
+        } else if (hasChildren) {
             return (
                 <Square
                     expandButtonColor={expandButtonColor}
@@ -154,6 +169,8 @@ export default class Row extends React.Component {
             expandButtonColor,
             nodeSize,
             nodeIcon,
+            collapsedIcon,
+            expandedIcon,
         } = this.props;
         const hasChildren = element.children && element.children.length > 0;
         return (
@@ -218,6 +235,8 @@ export default class Row extends React.Component {
                                 expandButtonColor={expandButtonColor}
                                 nodeSize={nodeSize}
                                 nodeIcon={nodeIcon}
+                                collapsedIcon={collapsedIcon}
+                                expandedIcon={expandedIcon}
                             />
                         )
                     )}

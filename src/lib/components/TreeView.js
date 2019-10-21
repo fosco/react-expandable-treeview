@@ -48,6 +48,8 @@ class TreeView extends React.Component {
             expandButtonColor,
             nodeSize,
             nodeIcon,
+            collapsedIcon,
+            expandedIcon,
         } = this.props;
         const { expandedElements } = this.state;
         return (
@@ -69,6 +71,8 @@ class TreeView extends React.Component {
                         expandButtonColor={expandButtonColor}
                         nodeSize={nodeSize}
                         nodeIcon={nodeIcon}
+                        collapsedIcon={collapsedIcon}
+                        expandedIcon={expandedIcon}
                     />
                 ))}
             </div>
@@ -86,6 +90,8 @@ TreeView.propTypes = {
     expandButtonColor: PropTypes.string,
     nodeSize: PropTypes.number,
     nodeIcon: PropTypes.string,
+    collapsedIcon: PropTypes.string,
+    expandedIcon: PropTypes.string,
 };
 
 TreeView.defaultProps = {

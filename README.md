@@ -109,3 +109,5 @@ Here are the props you can pass to `TreeView`.
 | expandButtonColor | `string`| optional | `'#4B6DAA'` | The color of the expand button |
 | nodeSize| `number`| optional | 20 | The size of the tree leaf icons |
 | nodeIcon| `string`| optional | [blue dot] | The node icon. Must be a base64 imported image |
+| collapsedIcon| `string`| optional | [+ sign] | The collapsed icon. Must be a base64 imported image. Require to set also the `expandedIcon`. |
+| expandedIcon| `string`| optional | [- sign] | The expanded icon. Must be a base64 imported image. Require to set also the `collapsedIcon`. |
