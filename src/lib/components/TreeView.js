@@ -41,6 +41,7 @@ class TreeView extends React.Component {
         const {
             data,
             renderNode,
+            renderNodeIcon,
             lineColor,
             lineWidth,
             lineStyle,
@@ -69,6 +70,7 @@ class TreeView extends React.Component {
                         expandButtonColor={expandButtonColor}
                         nodeSize={nodeSize}
                         nodeIcon={nodeIcon}
+                        renderNodeIcon={renderNodeIcon}
                     />
                 ))}
             </div>
@@ -79,6 +81,7 @@ class TreeView extends React.Component {
 TreeView.propTypes = {
     data: PropTypes.array.isRequired,
     renderNode: PropTypes.func.isRequired,
+    renderNodeIcon: PropTypes.func,
     lineColor: PropTypes.string,
     lineWidth: PropTypes.number,
     lineStyle: PropTypes.string,
@@ -95,7 +98,7 @@ TreeView.defaultProps = {
     lineAlpha: 0.4,
     expandButtonColor: '#4B6DAA',
     nodeSize: 20,
-    nodeIcon: defaultNodeIcon,
+    nodeIcon: defaultNodeIcon
 }
 
 export default TreeView;
