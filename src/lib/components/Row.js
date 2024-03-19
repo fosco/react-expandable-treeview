@@ -147,6 +147,7 @@ export default class Row extends React.Component {
             expandedElements,
             onNodeClick,
             renderNode,
+            renderNodeIcon,
             lineColor,
             lineWidth,
             lineStyle,
@@ -157,72 +158,77 @@ export default class Row extends React.Component {
         } = this.props;
         const hasChildren = element.children && element.children.length > 0;
         return (
-            <RowWrapper
-                first={depth === 0}
-                nodeSize={nodeSize}
-            >
-                <FirstColumn nodeSize={nodeSize}>
-                    {this.renderJunction(hasChildren)}
-                    {!isLastParent &&
-                        <VerticalLine
-                            nodeSize={nodeSize}
-                            lineWidth={lineWidth}
-                            lineColor={lineColor}
-                            lineStyle={lineStyle}
-                            lineAlpha={lineAlpha}
-                        />}
-                </FirstColumn>
-                <SecondColumn>
-                    <NodeWrapper>
-                        <HorizontalLine
-                            nodeSize={nodeSize}
-                            lineWidth={lineWidth}
-                            lineStyle={lineStyle}
-                            lineColor={lineColor}
-                            lineAlpha={lineAlpha}
-                        />
-                        <Connector>
-                            <NodeIcon
-                                alt="node icon"
-                                src={nodeIcon}
-                                nodeSize={nodeSize}
-                            />
-                            {hasChildren && isExpanded ?
-                                <VerticalLine
-                                    nodeSize={nodeSize}
-                                    lineWidth={lineWidth}
-                                    lineColor={lineColor}
-                                    lineStyle={lineStyle}
-                                    lineAlpha={lineAlpha}
-                                />
-                                :
-                                <Separator nodeSize={nodeSize} />}
-                        </Connector>
-                        <Node>{renderNode(element)}</Node>
-                    </NodeWrapper>
-                    {hasChildren && isExpanded && element.children.map((child, i) =>
-                        (
-                            <Row
-                                key={shortid.generate()}
-                                element={child}
-                                depth={depth + 1}
-                                isLastParent={i === element.children.length - 1}
-                                isExpanded={expandedElements.has(child.id)}
-                                expandedElements={expandedElements}
-                                onNodeClick={onNodeClick}
-                                renderNode={renderNode}
-                                lineColor={lineColor}
-                                lineWidth={lineWidth}
-                                lineStyle={lineStyle}
-                                lineAlpha={lineAlpha}
-                                expandButtonColor={expandButtonColor}
-                                nodeSize={nodeSize}
-                                nodeIcon={nodeIcon}
-                            />
-                        )
-                    )}
-                </SecondColumn>
-            </RowWrapper>
+          <RowWrapper first={depth === 0} nodeSize={nodeSize}>
+            <FirstColumn nodeSize={nodeSize}>
+              {this.renderJunction(hasChildren)}
+              {!isLastParent && (
+                <VerticalLine
+                  nodeSize={nodeSize}
+                  lineWidth={lineWidth}
+                  lineColor={lineColor}
+                  lineStyle={lineStyle}
+                  lineAlpha={lineAlpha}
+                />
+              )}
+            </FirstColumn>
+            <SecondColumn>
+              <NodeWrapper>
+                <HorizontalLine
+                  nodeSize={nodeSize}
+                  lineWidth={lineWidth}
+                  lineStyle={lineStyle}
+                  lineColor={lineColor}
+                  lineAlpha={lineAlpha}
+                />
+                <Connector>
+                  {renderNodeIcon ? (
+                    renderNodeIcon({ element, nodeIcon })
+                  ) : (
+                    <NodeIcon
+                      alt="node icon"
+                      src={nodeIcon}
+                      nodeSize={nodeSize}
+                    />
+                  )}
+
+                  {hasChildren && isExpanded ? (
+                    <VerticalLine
+                      nodeSize={nodeSize}
+                      lineWidth={lineWidth}
+                      lineColor={lineColor}
+                      lineStyle={lineStyle}
+                      lineAlpha={lineAlpha}
+                    />
+                  ) : (
+                    <Separator nodeSize={nodeSize} />
+                  )}
+                </Connector>
+                <Node>{renderNode(element)}</Node>
+              </NodeWrapper>
+              {hasChildren &&
+                isExpanded &&
+                element.children.map((child, i) => (
+                  <Row
+                    key={shortid.generate()}
+                    element={child}
+                    depth={depth + 1}
+                    isLastParent={i === element.children.length - 1}
+                    isExpanded={expandedElements.has(child.id)}
+                    expandedElements={expandedElements}
+                    onNodeClick={onNodeClick}
+                    renderNode={renderNode}
+                    lineColor={lineColor}
+                    lineWidth={lineWidth}
+                    lineStyle={lineStyle}
+                    lineAlpha={lineAlpha}
+                    expandButtonColor={expandButtonColor}
+                    nodeSize={nodeSize}
+                    nodeIcon={nodeIcon}
+                    renderNodeIcon={renderNodeIcon}
+                  />
+                ))}
+            </SecondColumn>
+          </RowWrapper>
         );
     }
 }

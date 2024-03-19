@@ -41,6 +41,7 @@ class TreeView extends React.Component {
         const {
             data,
             renderNode,
+            renderNodeIcon,
             lineColor,
             lineWidth,
             lineStyle,
@@ -69,6 +70,7 @@ class TreeView extends React.Component {
                         expandButtonColor={expandButtonColor}
                         nodeSize={nodeSize}
                         nodeIcon={nodeIcon}
+                        renderNodeIcon={renderNodeIcon}
                     />
                 ))}
             </div>
